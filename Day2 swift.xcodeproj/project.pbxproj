@@ -16,6 +16,8 @@
 		E1365A432DBE20F800BE4C32 /* Day2_swiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1365A422DBE20F800BE4C32 /* Day2_swiftTests.swift */; };
 		E1365A4D2DBE20F800BE4C32 /* Day2_swiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1365A4C2DBE20F800BE4C32 /* Day2_swiftUITests.swift */; };
 		E1365A4F2DBE20F800BE4C32 /* Day2_swiftUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1365A4E2DBE20F800BE4C32 /* Day2_swiftUITestsLaunchTests.swift */; };
+		E1365A622DBE2D1700BE4C32 /* MoviesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1365A612DBE2D1700BE4C32 /* MoviesTableViewController.swift */; };
+		E1365A642DBE2FB900BE4C32 /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1365A632DBE2FB900BE4C32 /* MovieDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		E1365A482DBE20F800BE4C32 /* Day2 swiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Day2 swiftUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1365A4C2DBE20F800BE4C32 /* Day2_swiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day2_swiftUITests.swift; sourceTree = "<group>"; };
 		E1365A4E2DBE20F800BE4C32 /* Day2_swiftUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day2_swiftUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E1365A612DBE2D1700BE4C32 /* MoviesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTableViewController.swift; sourceTree = "<group>"; };
+		E1365A632DBE2FB900BE4C32 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,8 @@
 				E1365A342DBE20F700BE4C32 /* Assets.xcassets */,
 				E1365A362DBE20F700BE4C32 /* LaunchScreen.storyboard */,
 				E1365A392DBE20F700BE4C32 /* Info.plist */,
+				E1365A612DBE2D1700BE4C32 /* MoviesTableViewController.swift */,
+				E1365A632DBE2FB900BE4C32 /* MovieDetailsViewController.swift */,
 			);
 			path = "Day2 swift";
 			sourceTree = "<group>";
@@ -258,6 +264,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1365A642DBE2FB900BE4C32 /* MovieDetailsViewController.swift in Sources */,
+				E1365A622DBE2D1700BE4C32 /* MoviesTableViewController.swift in Sources */,
 				E1365A302DBE20F600BE4C32 /* ViewController.swift in Sources */,
 				E1365A2C2DBE20F600BE4C32 /* AppDelegate.swift in Sources */,
 				E1365A2E2DBE20F600BE4C32 /* SceneDelegate.swift in Sources */,
