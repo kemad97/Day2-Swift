@@ -10,16 +10,19 @@ import Kingfisher
 
 private let reuseIdentifier = "Cell"
 
-class ImageCollectionViewController: UICollectionViewController {
+class ImageCollectionViewController: UICollectionViewController , UICollectionViewDelegateFlowLayout
+{
     private let imageUrls = [
-           "https://pngimage.net/wp-content/uploads/2018/05/courses-png-6.png",
-           "https://leisure.union.ufl.edu/Content/Images/leisure-courses.png",
-           "https://cdn2.iconfinder.com/data/icons/new-year-resolutions/64/resolutions-06-512.png",
-           "https://pngimage.net/wp-content/uploads/2018/05/courses-png.png",
-           "https://www.pngitem.com/pimgs/m/49-491826_of-course-developing-your-employee-engagement-offering-business.png",
-           "https://feedbacksystems.com/wp-content/uploads/2019/12/Business.png"
-       ]
-
+        
+                "https://cdn.pixabay.com/photo/2014/03/29/09/17/cat-300572_960_720.jpg",
+                "https://www.alleycat.org/wp-content/uploads/2019/03/FELV-cat.jpg",
+                "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg",
+                "https://www.alleycat.org/wp-content/uploads/2019/03/FELV-cat.jpg",
+                "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg",
+                "https://www.alleycat.org/wp-content/uploads/2019/03/FELV-cat.jpg",
+                "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg"
+            
+                ]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -64,6 +67,10 @@ class ImageCollectionViewController: UICollectionViewController {
         }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 150, height: 150)
     }
 
     // MARK: UICollectionViewDelegate
