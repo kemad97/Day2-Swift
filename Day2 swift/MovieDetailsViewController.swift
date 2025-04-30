@@ -28,8 +28,7 @@ class MovieDetailsViewController: UIViewController {
         label_rating.text = "Rating: \(movie.rating)"
         label_release.text = "Release Year: \(movie.releaseYear)"
         label_genre.text = "Genre: \(movie.genre) "
-        filmImg.image = UIImage(named: "film")
-        
+        filmImg.image = movie.image
         /*
          // MARK: - Navigation
          

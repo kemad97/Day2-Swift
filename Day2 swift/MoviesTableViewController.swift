@@ -12,6 +12,8 @@ struct Movie {
     let rating: Float
     let releaseYear: Int
     let genre: [String]
+    let image: UIImage?
+    
 }
 
 
@@ -19,11 +21,11 @@ class MoviesTableViewController: UITableViewController {
     
     
     private var movies: [Movie] = [
-           Movie(title: "Film 1", rating: 7, releaseYear: 2000, genre: ["Action],[Drama" ]) ,
-           Movie(title: "Film 2", rating: 8, releaseYear: 2000, genre:  ["Action],[Drama" ]),
-           Movie(title: "Film 3", rating: 9, releaseYear: 2000, genre: ["Action],[Drama" ]),
-           Movie(title: "Film 4",  rating: 8, releaseYear: 2000, genre: ["Action],[Drama" ]),
-           Movie(title: "Film 5", rating: 7, releaseYear: 2000, genre: ["Action],[Drama" ] )
+//           Movie(title: "Film 1", rating: 7, releaseYear: 2000, genre: ["Action],[Drama" ]) ,
+//           Movie(title: "Film 2", rating: 8, releaseYear: 2000, genre:  ["Action],[Drama" ]),
+//           Movie(title: "Film 3", rating: 9, releaseYear: 2000, genre: ["Action],[Drama" ]),
+//           Movie(title: "Film 4",  rating: 8, releaseYear: 2000, genre: ["Action],[Drama" ]),
+//           Movie(title: "Film 5", rating: 7, releaseYear: 2000, genre: ["Action],[Drama" ] )
        ]
 
     override func viewDidLoad() {
@@ -75,11 +77,13 @@ class MoviesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-           let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+           let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MovieTableViewCell
         
            let movie = movies[indexPath.row]
         
            cell.textLabel?.text = movie.title
+        cell.configure(with: movie)
+
         
            return cell
        }

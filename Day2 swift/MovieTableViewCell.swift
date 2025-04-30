@@ -17,7 +17,6 @@ class MovieTableViewCell: UITableViewCell {
         
         imgView.layer.masksToBounds = true
         imgView.contentMode = .scaleAspectFill
-               imgView.image = UIImage(named: "film")
                
                //imgView.layer.borderWidth = 1.0
               // imgView.layer.borderColor = UIColor.lightGray.cgColor
@@ -31,5 +30,15 @@ class MovieTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func configure(with movie: Movie) {
+       //   movieTitleLabel.text = movie.title
+          
+          if let movieImage = movie.image {
+              imgView.image = movieImage
+          } else {
+              imgView.image = UIImage(named: "film")
+          }
+      }
 
 }
