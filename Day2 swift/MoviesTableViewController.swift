@@ -7,23 +7,7 @@
 
 import UIKit
 
-struct Movie {
-    var id: Int?
-    var title: String
-    var genre: String
-    var releaseYear: Int
-    var rating: Double
-    var image: UIImage?
-    
-    init(id: Int? = nil, title: String, genre: String, releaseYear: Int, rating: Double, image: UIImage? = nil) {
-        self.id = id
-        self.title = title
-        self.genre = genre
-        self.releaseYear = releaseYear
-        self.rating = rating
-        self.image = image
-    }
-}
+
 
 
 class MoviesTableViewController: UITableViewController {
@@ -50,6 +34,18 @@ class MoviesTableViewController: UITableViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addBtnPressed))
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            
+            loadMovies()
+        }
+    
+    func loadMovies() {
+            movies = DatabaseManager.shared.getAllMovies()
+            tableView.reloadData()
+        }
+        
 
     @objc func addBtnPressed() {
             guard let addMovieVC = self.storyboard?.instantiateViewController(withIdentifier: "AddMovieId") as? AddMovieViewController else {
@@ -57,9 +53,11 @@ class MoviesTableViewController: UITableViewController {
                 return
             }
         
-        addMovieVC.onMovieAdded={[weak self]
-            newMovie in self?.movies.append(newMovie)
-            self?.tableView.reloadData()
+        addMovieVC.onMovieAdded = { [weak self] newMovie in
+            if (DatabaseManager.shared.insertMovie(newMovie) != nil)
+            {
+                self?.loadMovies()
+            }
         }
             let navController = UINavigationController(rootViewController: addMovieVC)
             present(navController, animated: true, completion: nil)

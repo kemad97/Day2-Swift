@@ -21,6 +21,7 @@
 		E18458042DBF894E00892371 /* AddMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18458032DBF894E00892371 /* AddMovieViewController.swift */; };
 		E1E673D82DC234DA002DA382 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E673D72DC234DA002DA382 /* MovieTableViewCell.swift */; };
 		E1E673DA2DC2414F002DA382 /* DatabaseMangager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E673D92DC2414F002DA382 /* DatabaseMangager.swift */; };
+		E1E673DC2DC245A3002DA382 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E673DB2DC245A3002DA382 /* Movie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		E18458032DBF894E00892371 /* AddMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMovieViewController.swift; sourceTree = "<group>"; };
 		E1E673D72DC234DA002DA382 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		E1E673D92DC2414F002DA382 /* DatabaseMangager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseMangager.swift; sourceTree = "<group>"; };
+		E1E673DB2DC245A3002DA382 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				E18458032DBF894E00892371 /* AddMovieViewController.swift */,
 				E1E673D72DC234DA002DA382 /* MovieTableViewCell.swift */,
 				E1E673D92DC2414F002DA382 /* DatabaseMangager.swift */,
+				E1E673DB2DC245A3002DA382 /* Movie.swift */,
 			);
 			path = "Day2 swift";
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 			files = (
 				E1E673DA2DC2414F002DA382 /* DatabaseMangager.swift in Sources */,
 				E1365A642DBE2FB900BE4C32 /* MovieDetailsViewController.swift in Sources */,
+				E1E673DC2DC245A3002DA382 /* Movie.swift in Sources */,
 				E1365A622DBE2D1700BE4C32 /* MoviesTableViewController.swift in Sources */,
 				E1E673D82DC234DA002DA382 /* MovieTableViewCell.swift in Sources */,
 				E1365A302DBE20F600BE4C32 /* ViewController.swift in Sources */,
