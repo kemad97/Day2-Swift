@@ -18,7 +18,7 @@ struct Movie {
 class MoviesTableViewController: UITableViewController {
     
     
-    private let movies: [Movie] = [
+    private var movies: [Movie] = [
            Movie(title: "Film 1", rating: 7, releaseYear: 2000, genre: ["Action],[Drama" ]) ,
            Movie(title: "Film 2", rating: 8, releaseYear: 2000, genre:  ["Action],[Drama" ]),
            Movie(title: "Film 3", rating: 9, releaseYear: 2000, genre: ["Action],[Drama" ]),
@@ -34,10 +34,29 @@ class MoviesTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MoviesId")
-
+//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MoviesId")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+                  barButtonSystemItem: .add,
+                  target: self,
+                  action: #selector(addMovieBtnPressed)
+              )
     }
 
+    @objc func addMovieBtnPressed() {
+            guard let addMovieVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailsId") as? MovieDetailsViewController else {
+                return
+            }
+            
+            // Setup callback to receive new movie
+            addMovieVC.onMovieAdded = { [weak self] newMovie in
+                self?.movies.append(newMovie)
+                self?.tableView.reloadData()
+            }
+            
+            let navController = UINavigationController(rootViewController: addMovieVC)
+            present(navController, animated: true, completion: nil)
+        }
+        
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
