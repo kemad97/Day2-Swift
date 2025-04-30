@@ -38,6 +38,7 @@ class AddMovieViewController: UIViewController, UIImagePickerControllerDelegate,
 
     
     @objc private func onDonePressed() {
+        
            guard let title = titleTf.text, !title.isEmpty,
                  let ratingText = ratingTf.text, let rating = Float(ratingText),
                  let yearText = yearTf.text, let year = Int(yearText),
@@ -49,15 +50,21 @@ class AddMovieViewController: UIViewController, UIImagePickerControllerDelegate,
            let genres = genreText.components(separatedBy: ",").map {
                $0.trimmingCharacters(in: .whitespaces)
            }.filter { !$0.isEmpty }
-           
+
+        guard let rating = Double(ratingText) else {
+                showAlert(message: "Rating must be a number")
+                return
+            }
          
-           let newMovie = Movie(
-               title: title,
-               rating: rating,
-               releaseYear: year,
-               genre: genres,
-               image: selectedImage
-           )
+          let newMovie = Movie(
+              id: nil,
+              title: title,
+              genre: genres,
+              releaseYear: relea,
+              rating: rating,
+              image: selectedImage
+          )
+          
            
            onMovieAdded?(newMovie)
            dismiss(animated: true)
