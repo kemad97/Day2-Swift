@@ -34,29 +34,26 @@ class MoviesTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MoviesId")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-                  barButtonSystemItem: .add,
-                  target: self,
-                  action: #selector(addMovieBtnPressed)
-              )
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MoviesId")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addBtnPressed))
+
     }
 
-    @objc func addMovieBtnPressed() {
-            guard let addMovieVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailsId") as? MovieDetailsViewController else {
+    @objc func addBtnPressed() {
+            guard let addMovieVC = self.storyboard?.instantiateViewController(withIdentifier: "AddMovieId") as? AddMovieViewController else {
+                
                 return
             }
-            
-            // Setup callback to receive new movie
-            addMovieVC.onMovieAdded = { [weak self] newMovie in
-                self?.movies.append(newMovie)
-                self?.tableView.reloadData()
-            }
-            
+        
+        addMovieVC.onMovieAdded={[weak self]
+            newMovie in self?.movies.append(newMovie)
+            self?.tableView.reloadData()
+        }
             let navController = UINavigationController(rootViewController: addMovieVC)
             present(navController, animated: true, completion: nil)
         }
-        
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -68,10 +65,6 @@ class MoviesTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return movies.count
         
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        100
     }
 
     
