@@ -10,30 +10,24 @@ import UIKit
 import SQLite3
 
 class DatabaseManager {
-    // Singleton instance
     static let shared = DatabaseManager()
     
     private var db: OpaquePointer?
     
-    // Private initializer to enforce singleton pattern
     private init() {
-        // Get path to database file in documents directory
+        
         let fileURL = try! FileManager.default
             .url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             .appendingPathComponent("MoviesDatabase.sqlite")
         
-        // Open database
-        if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
-            print("Error opening database")
-            return
-        }
+         sqlite3_open(fileURL.path, &db)
         
-        // Create tables if they don't exist
+        
         createTables()
     }
     
     private func createTables() {
-        // Movies table SQL string
+        
         let createTableString = """
         CREATE TABLE IF NOT EXISTS movies(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -47,11 +41,10 @@ class DatabaseManager {
         
         var createTableStatement: OpaquePointer?
         
-        // Prepare statement
         if sqlite3_prepare_v2(db, createTableString, -1, &createTableStatement, nil) == SQLITE_OK {
-            // Execute statement
+            
             if sqlite3_step(createTableStatement) == SQLITE_DONE {
-                print("Movies table created successfully")
+                print("db created successfully")
             } else {
                 print("Failed to create movies table")
             }
@@ -59,7 +52,6 @@ class DatabaseManager {
             print("Failed to prepare create table statement")
         }
         
-        // Finalize statement
         sqlite3_finalize(createTableStatement)
     }
     
@@ -69,19 +61,17 @@ class DatabaseManager {
         let insertStatementString = "INSERT INTO movies (title, genre, releaseYear, rating, imageData) VALUES (?, ?, ?, ?, ?);"
         var insertStatement: OpaquePointer?
         
-        // Prepare statement
-        if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
+        if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK
+        {
             
-            // Bind text values
             sqlite3_bind_text(insertStatement, 1, (movie.title as NSString).utf8String, -1, nil)
             sqlite3_bind_text(insertStatement, 2, (movie.genre as NSString).utf8String, -1, nil)
             
-            // Bind integer and double values
             sqlite3_bind_int(insertStatement, 3, Int32(movie.releaseYear))
             sqlite3_bind_double(insertStatement, 4, movie.rating)
             
-            // Convert UIImage to Data for BLOB storage
-            if let image = movie.image, let imageData = image.jpegData(compressionQuality: 0.8) {
+            if let image = movie.image, let imageData = image.jpegData(compressionQuality: 1.0)
+            {
                 let count = Int32(imageData.count)
                 imageData.withUnsafeBytes { bytes in
                     let rawPointer = bytes.baseAddress
@@ -91,16 +81,18 @@ class DatabaseManager {
                 sqlite3_bind_null(insertStatement, 5)
             }
             
-            // Execute insert
-            if sqlite3_step(insertStatement) == SQLITE_DONE {
+            if sqlite3_step(insertStatement) == SQLITE_DONE
+            {
                 print("Successfully inserted movie")
                 let rowID = sqlite3_last_insert_rowid(db)
                 sqlite3_finalize(insertStatement)
                 return rowID
-            } else {
+            }
+            else {
                 print("Failed to insert movie")
             }
-        } else {
+        }
+        else {
             print("INSERT statement could not be prepared")
         }
         
@@ -113,12 +105,11 @@ class DatabaseManager {
         let queryStatementString = "SELECT * FROM movies;"
         var queryStatement: OpaquePointer?
         
-        // Prepare statement
         if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
             
-            // Execute query
-            while sqlite3_step(queryStatement) == SQLITE_ROW {
-                // Extract values
+            while sqlite3_step(queryStatement) == SQLITE_ROW
+            {
+                
                 let id = sqlite3_column_int64(queryStatement, 0)
                 
                 guard let titleCString = sqlite3_column_text(queryStatement, 1) else {
@@ -134,7 +125,6 @@ class DatabaseManager {
                 let releaseYear = Int(sqlite3_column_int(queryStatement, 3))
                 let rating = sqlite3_column_double(queryStatement, 4)
                 
-                // Extract image data
                 var image: UIImage? = nil
                 if let blobPointer = sqlite3_column_blob(queryStatement, 5) {
                     let blobSize = Int(sqlite3_column_bytes(queryStatement, 5))
@@ -142,7 +132,6 @@ class DatabaseManager {
                     image = UIImage(data: blobData)
                 }
                 
-                // Create movie object and add to array
                 let movie = Movie(id: Int(id), title: title, genre: genre, releaseYear: releaseYear, rating: rating, image: image)
                 movies.append(movie)
             }
@@ -158,13 +147,10 @@ class DatabaseManager {
         let deleteStatementString = "DELETE FROM movies WHERE id = ?;"
         var deleteStatement: OpaquePointer?
         
-        // Prepare statement
         if sqlite3_prepare_v2(db, deleteStatementString, -1, &deleteStatement, nil) == SQLITE_OK {
             
-            // Bind ID parameter
             sqlite3_bind_int(deleteStatement, 1, Int32(id))
             
-            // Execute delete
             if sqlite3_step(deleteStatement) == SQLITE_DONE {
                 print("Successfully deleted movie")
                 sqlite3_finalize(deleteStatement)

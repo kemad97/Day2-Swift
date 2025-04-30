@@ -99,7 +99,6 @@ class AddMovieViewController: UIViewController, UIImagePickerControllerDelegate,
         dismiss(animated: true)
     }
     
-    @available(iOS 14, *)
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         dismiss(animated: true)
         
