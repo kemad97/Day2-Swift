@@ -19,6 +19,7 @@
 		E1365A432DBE20F800BE4C32 /* Day2_swiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1365A422DBE20F800BE4C32 /* Day2_swiftTests.swift */; };
 		E1365A4D2DBE20F800BE4C32 /* Day2_swiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1365A4C2DBE20F800BE4C32 /* Day2_swiftUITests.swift */; };
 		E1365A4F2DBE20F800BE4C32 /* Day2_swiftUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1365A4E2DBE20F800BE4C32 /* Day2_swiftUITestsLaunchTests.swift */; };
+		E1A1FBCE2DC6296A006B376D /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = E1A1FBCD2DC6296A006B376D /* SkeletonView */; };
 		E1A4033E2DC0F15D0013C4ED /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A4033D2DC0F15D0013C4ED /* ImageCollectionViewCell.swift */; };
 		E1A403402DC0F1850013C4ED /* ImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A4033F2DC0F1850013C4ED /* ImageCollectionViewController.swift */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1A1FBCE2DC6296A006B376D /* SkeletonView in Frameworks */,
 				E106341D2DC0F7CF00A7687B /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,6 +169,7 @@
 			name = "Day2 swift";
 			packageProductDependencies = (
 				E106341C2DC0F7CF00A7687B /* Kingfisher */,
+				E1A1FBCD2DC6296A006B376D /* SkeletonView */,
 			);
 			productName = "Day2 swift";
 			productReference = E1365A282DBE20F600BE4C32 /* Day2 swift.app */;
@@ -242,6 +245,7 @@
 			mainGroup = E1365A1F2DBE20F600BE4C32;
 			packageReferences = (
 				E106341B2DC0F7CF00A7687B /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				E1A1FBCC2DC6296A006B376D /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = E1365A292DBE20F600BE4C32 /* Products */;
 			projectDirPath = "";
@@ -639,6 +643,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		E1A1FBCC2DC6296A006B376D /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -646,6 +658,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E106341B2DC0F7CF00A7687B /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		E1A1FBCD2DC6296A006B376D /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1A1FBCC2DC6296A006B376D /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

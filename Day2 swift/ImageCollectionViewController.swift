@@ -72,9 +72,32 @@ class ImageCollectionViewController: UICollectionViewController , UICollectionVi
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ImageCollectionViewCell
         
         let movie = movies [indexPath.row]
-        if let url = URL(string: movie.Poster){
-            cell.customImgView.kf.setImage(with: url)
-        }
+        
+        // Start shimmer effect immediately
+           cell.startShimmer()
+           cell.customImgView.image = nil // Clear previous image
+        
+
+        
+        guard let url = URL(string: movie.Poster) else {
+               cell.stopShimmer()
+               cell.customImgView.image = UIImage(named: "placeholder_error") // Fallback image
+               return cell
+           }
+        
+        cell.customImgView.kf.setImage(
+                with: url,
+                completionHandler: { result in
+                    cell.stopShimmer() // Stop shimmer when done (success or failure)
+                    
+                    switch result {
+                    case .success(_):
+                        break // Image loaded successfully
+                    case .failure(_):
+                        cell.customImgView.image = UIImage(named: "placeholder_error") // Error fallback
+                    }
+                }
+            )
             
         
         return cell
