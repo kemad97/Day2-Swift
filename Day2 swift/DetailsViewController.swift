@@ -32,7 +32,7 @@ class DetailsViewController: UIViewController {
         title = movie.Title
 
         if let url = URL(string: movie.Poster) {
-            movieImgView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"))
+            movieImgView.kf.setImage(with: url, placeholder: UIImage(named: "notfound"))
         }
         titleLabel.text=movie.Title
         yearLabel.text = "Year: \(movie.Year)"
