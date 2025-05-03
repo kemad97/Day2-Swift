@@ -79,8 +79,10 @@ class ImageCollectionViewController: UICollectionViewController , UICollectionVi
         
 
         
-        guard let url = URL(string: movie.Poster) else {
-               cell.stopShimmer()
+        guard let url = URL(string: movie.Poster)
+        
+        else {
+              // cell.stopShimmer()
                cell.customImgView.image = UIImage(named: "placeholder_error") // Fallback image
                return cell
            }
@@ -94,7 +96,8 @@ class ImageCollectionViewController: UICollectionViewController , UICollectionVi
                     case .success(_):
                         break // Image loaded successfully
                     case .failure(_):
-                        cell.customImgView.image = UIImage(named: "placeholder_error") // Error fallback
+                        cell.startShimmer()
+                        //cell.customImgView.image = UIImage(named: "placeholder_error") // Error fallback
                     }
                 }
             )
