@@ -12,39 +12,49 @@ private let reuseIdentifier = "Cell"
 
 class ImageCollectionViewController: UICollectionViewController , UICollectionViewDelegateFlowLayout
 {
-    private let imageUrls = [
-        
-                "https://cdn.pixabay.com/photo/2014/03/29/09/17/cat-300572_960_720.jpg",
-                "https://www.alleycat.org/wp-content/uploads/2019/03/FELV-cat.jpg",
-                "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg",
-                "https://www.alleycat.org/wp-content/uploads/2019/03/FELV-cat.jpg",
-                "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg",
-                "https://www.alleycat.org/wp-content/uploads/2019/03/FELV-cat.jpg",
-                "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg"
-            
-                ]
+    
+    private let reuseIdentifier = "Cell"
+    private var movies: [Movie] = []
+    private let apiUrl = "https://dummyjson.com/c/8b9b-3f93-4c8d-a8b9"
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        
+        fetchMovies()
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    func fetchMovies() {
+           guard let url = URL(string: apiUrl) else {
+               print("Invalid URL")
+               return
+           }
+           
+           let request = URLRequest(url: url)
+           let session = URLSession(configuration: .default)
+           
+           let task = session.dataTask(with: request) { [weak self] (data, response, error) in
+               guard let self = self
+               else { return }
+               
+               
+               
+               if let data = data {
+                   do {
+                       self.movies = try JSONDecoder().decode([Movie].self, from: data)
+                       
+                       DispatchQueue.main.async {
+                           self.collectionView.reloadData()
+                       }
+                   } catch {
+                       print("Error decoding JSON: \(error)")
+                   }
+               }
+           }
+           task.resume()
+       }
+    
+    
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -55,16 +65,17 @@ class ImageCollectionViewController: UICollectionViewController , UICollectionVi
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return imageUrls.count
+        return movies.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // Cast to your custom cell class
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ImageCollectionViewCell
         
-        if let url = URL(string: imageUrls[indexPath.item]) {
+        let movie = movies [indexPath.row]
+        if let url = URL(string: movie.Poster){
             cell.customImgView.kf.setImage(with: url)
         }
+            
         
         return cell
     }
@@ -73,6 +84,18 @@ class ImageCollectionViewController: UICollectionViewController , UICollectionVi
         return CGSize(width: 150, height: 150)
     }
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedMovie = movies[indexPath.row]
+        
+        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailsId") as? DetailsViewController
+        else {
+            return
+        }
+        
+        detailVC.movie=selectedMovie
+        navigationController?.pushViewController(detailVC, animated: true)
+        
+    }
     // MARK: UICollectionViewDelegate
 
     /*

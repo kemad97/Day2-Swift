@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E106341D2DC0F7CF00A7687B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E106341C2DC0F7CF00A7687B /* Kingfisher */; };
 		E12FB4362DC60F7E00648E54 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12FB4352DC60F7E00648E54 /* DetailsViewController.swift */; };
+		E12FB4382DC6123100648E54 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12FB4372DC6123100648E54 /* Movie.swift */; };
 		E1365A2C2DBE20F600BE4C32 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1365A2B2DBE20F600BE4C32 /* AppDelegate.swift */; };
 		E1365A2E2DBE20F600BE4C32 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1365A2D2DBE20F600BE4C32 /* SceneDelegate.swift */; };
 		E1365A302DBE20F600BE4C32 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1365A2F2DBE20F600BE4C32 /* ViewController.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		E12FB4352DC60F7E00648E54 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		E12FB4372DC6123100648E54 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		E1365A282DBE20F600BE4C32 /* Day2 swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Day2 swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1365A2B2DBE20F600BE4C32 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1365A2D2DBE20F600BE4C32 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				E1A4033D2DC0F15D0013C4ED /* ImageCollectionViewCell.swift */,
 				E1A4033F2DC0F1850013C4ED /* ImageCollectionViewController.swift */,
 				E12FB4352DC60F7E00648E54 /* DetailsViewController.swift */,
+				E12FB4372DC6123100648E54 /* Movie.swift */,
 			);
 			path = "Day2 swift";
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E12FB4382DC6123100648E54 /* Movie.swift in Sources */,
 				E1A403402DC0F1850013C4ED /* ImageCollectionViewController.swift in Sources */,
 				E1365A302DBE20F600BE4C32 /* ViewController.swift in Sources */,
 				E1365A2C2DBE20F600BE4C32 /* AppDelegate.swift in Sources */,

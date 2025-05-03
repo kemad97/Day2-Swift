@@ -14,10 +14,32 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var movieImgView: UIImageView!
+    
+    var movie : Movie?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+
+        getMovieDetails()
+
+    }
+    
+    private func getMovieDetails() {
+        guard let movie = movie else { return }
+        title = movie.Title
+
+        if let url = URL(string: movie.Poster) {
+            movieImgView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder"))
+        }
+        titleLabel.text=movie.Title
+        yearLabel.text = "Year: \(movie.Year)"
+        ratingLabel.text = "Rated: \(movie.Rated)"
+        directorLabel.text = "Director: \(movie.Director)"
+        ratingLabel.text = "IMDb Rating: \(movie.imdbRating)"
+
     }
     
 
