@@ -16,13 +16,71 @@ class ImageCollectionViewController: UICollectionViewController , UICollectionVi
     private let reuseIdentifier = "Cell"
     private var movies: [Movie] = []
     private let apiUrl = "https://dummyjson.com/c/8b9b-3f93-4c8d-a8b9"
-   
+    private let repository = MovieRepository()
+    private var isOffline = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchMovies()
+        //fetchMovies()
+        loadMovies()
+        
+        let addBtn = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector (onAddMovie ) )
+        
+        navigationItem.rightBarButtonItem=addBtn
+        
     }
-
+    
+    @objc func onAddMovie() {
+        guard let addMovieVC = storyboard?.instantiateViewController(withIdentifier: "AddID") as? AddMovieViewController else {
+            return
+        }
+        
+        addMovieVC.onMovieAdded = { [weak self] movie in
+            guard let self = self else { return }
+            
+            self.repository.addMovie(movie) { [weak self] success in
+                if success {
+                    DispatchQueue.main.async {
+                        self?.loadMovies()
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        // Show alert or other feedback
+                        print("Movie already exists or couldn't be added")
+                    }
+                }
+            }
+        }
+        
+        let navController = UINavigationController(rootViewController: addMovieVC)
+        present(navController, animated: true)
+    }
+    
+    private func loadMovies() {
+           // Show loading state
+           for cell in collectionView.visibleCells {
+               if let imageCell = cell as? ImageCollectionViewCell {
+                   imageCell.startShimmer()
+               }
+           }
+           
+           repository.fetchMovies { [weak self] fetchedMovies in
+               guard let self = self else { return }
+               
+               DispatchQueue.main.async {
+                   self.movies = fetchedMovies
+                   self.collectionView.reloadData()
+                   
+                   // Stop shimmer effect on cells
+                   for cell in self.collectionView.visibleCells {
+                       if let imageCell = cell as? ImageCollectionViewCell {
+                           imageCell.stopShimmer()
+                       }
+                   }
+               }
+           }
+       }
     
     func fetchMovies() {
            guard let url = URL(string: apiUrl) else {
@@ -87,8 +145,12 @@ class ImageCollectionViewController: UICollectionViewController , UICollectionVi
                return cell
            }
         
+        let options: KingfisherOptionsInfo = isOffline ? [.onlyFromCache] : []
+
+        
         cell.customImgView.kf.setImage(
                 with: url,
+                options: options,
                 completionHandler: { result in
                     cell.stopShimmer() // Stop shimmer when done (success or failure)
                     

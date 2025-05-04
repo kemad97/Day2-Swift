@@ -8,6 +8,7 @@
 import Foundation
 
 struct Movie: Codable {
+    
     let Title: String
     let Year: String
     let Rated: String
@@ -15,4 +16,18 @@ struct Movie: Codable {
     let Poster: String
     let imdbRating: String
     
+}
+
+extension Movie {
+    // Create a Movie from a MovieEntity
+    static func from(entity: MovieEntity) -> Movie {
+        return Movie(
+            Title: entity.title ?? "",
+            Year: entity.year ?? "",
+            Rated: entity.rated ?? "",
+            Director: entity.director ?? "",
+            Poster: entity.poster ?? "",
+            imdbRating: entity.imdbRating ?? ""
+        )
+    }
 }
