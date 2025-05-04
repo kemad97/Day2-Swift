@@ -21,10 +21,10 @@ class AddMovieViewController: UIViewController {
         super.viewDidLoad()
         
         title="Add New Movie"
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .done, target: self, action: #selector(OnDonePressed)
         )
-        // Do any additional setup after loading the view.
     }
     
     @objc func OnDonePressed (){

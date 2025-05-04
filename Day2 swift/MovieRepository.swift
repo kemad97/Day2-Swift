@@ -10,12 +10,12 @@ import CoreData
 
 
 class MovieRepository {
-    private let coreDataStack = AppDelegate.shared
+    private let coreData = AppDelegate.shared
     private let apiUrl = "https://dummyjson.com/c/8b9b-3f93-4c8d-a8b9"
     
     
-    func fetchMovies(forceRefresh: Bool = false, completion: @escaping ([Movie]) -> Void) {
-        if NetworkMonitor.shared.isConnected && forceRefresh {
+    func fetchMovies(useApi: Bool = false, completion: @escaping ([Movie]) -> Void) {
+        if NetworkMonitor.shared.isConnected && useApi {
             fetchMoviesFromAPI { [weak self] movies in
                 guard let self = self else { return }
                 
@@ -27,6 +27,7 @@ class MovieRepository {
                     completion(localMovies)
                 }
             }
+            
         } else {
             let localMovies = fetchMoviesFromCoreData()
             
@@ -47,52 +48,58 @@ class MovieRepository {
         }
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
     func addMovie(_ movie: Movie, completion: @escaping (Bool) -> Void) {
-        let context = coreDataStack.viewContext
+        let context = coreData.viewContext
         
-        let existing = fetchExistingMovie(title: movie.Title, year: movie.Year)
-        
-        if existing == nil {
-            let entity = MovieEntity(context: context)
-            entity.update(from: movie)
-            
-            coreDataStack.saveContext()
-            completion(true)
-        } else {
-            completion(false)
-        }
+        let entity = MovieEntity(context: context)
+        entity.update( movie: movie)
+
+        coreData.saveContext()
+        completion(true)
+       
     }
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     private func fetchMoviesFromCoreData() -> [Movie] {
-        let context = coreDataStack.viewContext
+        let context = coreData.viewContext
         let fetchRequest: NSFetchRequest<MovieEntity> = MovieEntity.fetchRequest()
-        
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         
         do {
             let movieEntities = try context.fetch(fetchRequest)
             return movieEntities.map { Movie.from(entity: $0) }
         } catch {
-            print("Error fetching from Core Data: \(error)")
+            print("Error  \(error)")
             return []
         }
     }
     
-    private func fetchExistingMovie(title: String, year: String) -> MovieEntity? {
-        let context = coreDataStack.viewContext
-        let fetchRequest: NSFetchRequest<MovieEntity> = MovieEntity.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "title == %@ AND year == %@", title, year)
-        fetchRequest.fetchLimit = 1
-        
-        do {
-            let results = try context.fetch(fetchRequest)
-            return results.first
-        } catch {
-            print("Error checking for existing movie: \(error)")
-            return nil
-        }
-    }
+    
+    
+    
+    
+    
+    
+    
+
     
     private func fetchMoviesFromAPI(completion: @escaping ([Movie]) -> Void) {
         guard let url = URL(string: apiUrl) else {
@@ -125,17 +132,14 @@ class MovieRepository {
     }
     
     private func saveMoviesToCoreData(_ movies: [Movie]) {
-        let context = coreDataStack.viewContext
+        let context = coreData.viewContext
         
         for movie in movies {
-            if let existingEntity = fetchExistingMovie(title: movie.Title, year: movie.Year) {
-                existingEntity.update(from: movie)
-            } else {
-                let newEntity = MovieEntity(context: context)
-                newEntity.update(from: movie)
-            }
+            
+            let newEntity = MovieEntity(context: context)
+            newEntity.update(movie:movie)
+           
+            coreData.saveContext()
         }
-        
-        coreDataStack.saveContext()
     }
 }

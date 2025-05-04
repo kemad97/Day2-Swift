@@ -29,3 +29,13 @@ extension MovieEntity {
 extension MovieEntity : Identifiable {
 
 }
+extension MovieEntity {
+    func update( movie: Movie) {
+        self.title = movie.Title
+        self.year = movie.Year
+        self.rated = movie.Rated
+        self.director = movie.Director
+        self.poster = movie.Poster
+        self.imdbRating = movie.imdbRating
+    }
+}

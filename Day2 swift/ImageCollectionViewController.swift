@@ -44,11 +44,6 @@ class ImageCollectionViewController: UICollectionViewController , UICollectionVi
                     DispatchQueue.main.async {
                         self?.loadMovies()
                     }
-                } else {
-                    DispatchQueue.main.async {
-                        // Show alert or other feedback
-                        print("Movie already exists or couldn't be added")
-                    }
                 }
             }
         }
@@ -58,26 +53,12 @@ class ImageCollectionViewController: UICollectionViewController , UICollectionVi
     }
     
     private func loadMovies() {
-           // Show loading state
-           for cell in collectionView.visibleCells {
-               if let imageCell = cell as? ImageCollectionViewCell {
-                   imageCell.startShimmer()
-               }
-           }
-           
-           repository.fetchMovies { [weak self] fetchedMovies in
-               guard let self = self else { return }
+           repository.fetchMovies(useApi: false) { [weak self] fetchedMovies in
                
                DispatchQueue.main.async {
-                   self.movies = fetchedMovies
-                   self.collectionView.reloadData()
-                   
-                   // Stop shimmer effect on cells
-                   for cell in self.collectionView.visibleCells {
-                       if let imageCell = cell as? ImageCollectionViewCell {
-                           imageCell.stopShimmer()
-                       }
-                   }
+                   self?.movies = fetchedMovies
+                   self?.collectionView.reloadData()
+ 
                }
            }
        }
@@ -131,7 +112,6 @@ class ImageCollectionViewController: UICollectionViewController , UICollectionVi
         
         let movie = movies [indexPath.row]
         
-        // Start shimmer effect immediately
            cell.startShimmer()
            cell.customImgView.image = nil // Clear previous image
         
@@ -141,7 +121,7 @@ class ImageCollectionViewController: UICollectionViewController , UICollectionVi
         
         else {
                cell.stopShimmer()
-               cell.customImgView.image = UIImage(named: "notfound") // Fallback image
+               cell.customImgView.image = UIImage(named: "notfound")
                return cell
            }
         
@@ -152,14 +132,14 @@ class ImageCollectionViewController: UICollectionViewController , UICollectionVi
                 with: url,
                 options: options,
                 completionHandler: { result in
-                    cell.stopShimmer() // Stop shimmer when done (success or failure)
                     
                     switch result {
                     case .success(_):
-                        break // Image loaded successfully
+                        cell.stopShimmer()
+                        break
                     case .failure(_):
                         cell.stopShimmer()
-                        cell.customImgView.image = UIImage(named: "notfound") // Error fallback
+                        cell.customImgView.image = UIImage(named: "notfound") 
                     }
                 }
             )

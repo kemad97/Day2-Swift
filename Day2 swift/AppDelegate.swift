@@ -35,9 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
 
-    // Add these properties to your AppDelegate class
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "MovieModel") // use the name you gave your .xcdatamodeld file
+        let container = NSPersistentContainer(name: "MovieModel") 
         container.loadPersistentStores { description, error in
             if let error = error {
                 fatalError("Unable to load persistent stores: \(error)")
@@ -51,7 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }()
 
-    // Add this function to your AppDelegate class
     func saveContext() {
         let context = persistentContainer.viewContext
         if context.hasChanges {
