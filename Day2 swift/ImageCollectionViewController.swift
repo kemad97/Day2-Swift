@@ -155,7 +155,7 @@ class ImageCollectionViewController: UICollectionViewController , UICollectionVi
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedMovie = movies[indexPath.row]
         
-        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailsId") as? DetailsViewController
+        guard let detailVC = storyboard?.instantiateViewController(withIdentifier: "DetailsId") as? StaticTableViewController
         else {
             return
         }

@@ -25,6 +25,7 @@
 		E1365A432DBE20F800BE4C32 /* Day2_swiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1365A422DBE20F800BE4C32 /* Day2_swiftTests.swift */; };
 		E1365A4D2DBE20F800BE4C32 /* Day2_swiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1365A4C2DBE20F800BE4C32 /* Day2_swiftUITests.swift */; };
 		E1365A4F2DBE20F800BE4C32 /* Day2_swiftUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1365A4E2DBE20F800BE4C32 /* Day2_swiftUITestsLaunchTests.swift */; };
+		E19C45382DCA1454008344C9 /* StaticTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19C45372DCA1454008344C9 /* StaticTableViewController.swift */; };
 		E1A1FBCE2DC6296A006B376D /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = E1A1FBCD2DC6296A006B376D /* SkeletonView */; };
 		E1A4033E2DC0F15D0013C4ED /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A4033D2DC0F15D0013C4ED /* ImageCollectionViewCell.swift */; };
 		E1A403402DC0F1850013C4ED /* ImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A4033F2DC0F1850013C4ED /* ImageCollectionViewController.swift */; };
@@ -69,6 +70,7 @@
 		E1365A482DBE20F800BE4C32 /* Day2 swiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Day2 swiftUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1365A4C2DBE20F800BE4C32 /* Day2_swiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day2_swiftUITests.swift; sourceTree = "<group>"; };
 		E1365A4E2DBE20F800BE4C32 /* Day2_swiftUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day2_swiftUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E19C45372DCA1454008344C9 /* StaticTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticTableViewController.swift; sourceTree = "<group>"; };
 		E1A4033D2DC0F15D0013C4ED /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		E1A4033F2DC0F1850013C4ED /* ImageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,6 +150,7 @@
 				E104BF282DC7682A00AF12BE /* MovieRepository.swift */,
 				E104BF2A2DC769BC00AF12BE /* NetworkMonitor.swift */,
 				E104BF2C2DC76AA700AF12BE /* AddMovieViewController.swift */,
+				E19C45372DCA1454008344C9 /* StaticTableViewController.swift */,
 			);
 			path = "Day2 swift";
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				E104BF292DC7682A00AF12BE /* MovieRepository.swift in Sources */,
 				E104BF2D2DC76AA700AF12BE /* AddMovieViewController.swift in Sources */,
 				E1A403402DC0F1850013C4ED /* ImageCollectionViewController.swift in Sources */,
+				E19C45382DCA1454008344C9 /* StaticTableViewController.swift in Sources */,
 				E1365A302DBE20F600BE4C32 /* ViewController.swift in Sources */,
 				E1365A2C2DBE20F600BE4C32 /* AppDelegate.swift in Sources */,
 				E1A4033E2DC0F15D0013C4ED /* ImageCollectionViewCell.swift in Sources */,
