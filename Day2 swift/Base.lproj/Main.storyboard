@@ -168,7 +168,7 @@
                                         <rect key="frame" x="0.0" y="878" width="375" height="152"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aFJ-I9-1aF" id="QAC-UJ-wfz">
-                                            <rect key="frame" x="0.0" y="0.0" width="430" height="152"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="152"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -263,41 +263,21 @@
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Year" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MED-ae-9gQ">
                                 <rect key="frame" x="42" y="213" width="297" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="VSO-Sv-U2B"/>
-                                    <constraint firstAttribute="width" secondItem="MED-ae-9gQ" secondAttribute="height" multiplier="297:34" id="Zhf-Vn-bBE"/>
-                                    <constraint firstAttribute="width" constant="315" id="nmi-j0-MTS"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Rating" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dk1-Dq-4mU">
                                 <rect key="frame" x="42" y="282" width="297" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="315" id="AY3-bX-q5x"/>
-                                    <constraint firstAttribute="height" constant="34" id="YDD-GN-Bys"/>
-                                    <constraint firstAttribute="width" secondItem="Dk1-Dq-4mU" secondAttribute="height" multiplier="297:34" id="jag-X4-EZB"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Director " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pEb-bH-f17">
                                 <rect key="frame" x="42" y="354" width="297" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="315" id="ZNB-xu-XVG"/>
-                                    <constraint firstAttribute="width" secondItem="pEb-bH-f17" secondAttribute="height" multiplier="297:34" id="dLQ-ss-akH"/>
-                                    <constraint firstAttribute="height" constant="34" id="qdt-m4-GzE"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Poster " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p7l-xv-fmw">
                                 <rect key="frame" x="42" y="427" width="297" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="p7l-xv-fmw" secondAttribute="height" multiplier="297:34" id="SLz-B6-GrG"/>
-                                    <constraint firstAttribute="height" constant="34" id="pag-MC-d46"/>
-                                    <constraint firstAttribute="width" constant="315" id="y16-Vx-Iws"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -342,6 +322,7 @@
                             <constraint firstItem="MED-ae-9gQ" firstAttribute="leading" secondItem="SNr-n8-Vp0" secondAttribute="leading" constant="42" id="6w8-L8-ZAw"/>
                             <constraint firstItem="MED-ae-9gQ" firstAttribute="top" secondItem="F5E-Zu-dLS" secondAttribute="bottom" constant="8" symbolic="YES" id="8Dr-Sz-V84"/>
                             <constraint firstItem="lgy-zU-G1S" firstAttribute="leading" secondItem="SNr-n8-Vp0" secondAttribute="leading" constant="42" id="9kt-fG-Ntn"/>
+                            <constraint firstItem="SNr-n8-Vp0" firstAttribute="trailing" secondItem="MED-ae-9gQ" secondAttribute="trailing" constant="36" id="BK2-Us-vYv"/>
                             <constraint firstItem="MED-ae-9gQ" firstAttribute="top" secondItem="SNr-n8-Vp0" secondAttribute="top" constant="166" id="BaR-ZA-cws"/>
                             <constraint firstItem="iau-27-rCc" firstAttribute="leading" secondItem="SNr-n8-Vp0" secondAttribute="leading" constant="42" id="GIX-n0-9qu"/>
                             <constraint firstItem="p7l-xv-fmw" firstAttribute="top" secondItem="d95-iL-ZO9" secondAttribute="bottom" constant="2" id="Hci-pa-bvI"/>
