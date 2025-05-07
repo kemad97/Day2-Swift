@@ -1,0 +1,59 @@
+/* Class = "UILabel"; text = "Rating"; ObjectID = "4vs-9C-S2y"; */
+"4vs-9C-S2y.text" = "التقييم";
+
+/* Class = "UILabel"; text = "Year"; ObjectID = "5Zh-8d-uvr"; */
+"5Zh-8d-uvr.text" = "السنة";
+
+/* Class = "UILabel"; text = "Rating"; ObjectID = "9Xg-m8-Qcn"; */
+"9Xg-m8-Qcn.text" = "التقييم";
+
+/* Class = "UITableViewSection"; headerTitle = "Section-1"; ObjectID = "9YQ-iH-X58"; */
+"9YQ-iH-X58.headerTitle" = "القسم-١";
+
+/* Class = "UITextField"; placeholder = "Enter Rating"; ObjectID = "Dk1-Dq-4mU"; */
+"Dk1-Dq-4mU.placeholder" = "أدخل التقييم";
+
+/* Class = "UILabel"; text = "Year"; ObjectID = "F5E-Zu-dLS"; */
+"F5E-Zu-dLS.text" = "السنة";
+
+/* Class = "UITextField"; placeholder = "Enter Year"; ObjectID = "MED-ae-9gQ"; */
+"MED-ae-9gQ.placeholder" = "أدخل السنة";
+
+/* Class = "UILabel"; text = "Rating"; ObjectID = "RhR-jH-OEi"; */
+"RhR-jH-OEi.text" = "التقييم";
+
+/* Class = "UITableViewSection"; headerTitle = "Section-2"; ObjectID = "S7r-3W-Q43"; */
+"S7r-3W-Q43.headerTitle" = "القسم-٢";
+
+/* Class = "UILabel"; text = "Poster"; ObjectID = "d95-iL-ZO9"; */
+"d95-iL-ZO9.text" = "الملصق";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "eC0-Oc-WAg"; */
+"eC0-Oc-WAg.text" = "العنوان";
+
+/* Class = "UILabel"; text = "Year"; ObjectID = "fr3-kd-n7e"; */
+"fr3-kd-n7e.text" = "السنة";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "gAY-k0-oHw"; */
+"gAY-k0-oHw.text" = "العنوان";
+
+/* Class = "UILabel"; text = "Director"; ObjectID = "iau-27-rCc"; */
+"iau-27-rCc.text" = "المخرج";
+
+/* Class = "UITextField"; placeholder = "Enter Title "; ObjectID = "lgy-zU-G1S"; */
+"lgy-zU-G1S.placeholder" = "أدخل العنوان";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "n4M-Mt-nuE"; */
+"n4M-Mt-nuE.text" = "العنوان";
+
+/* Class = "UITextField"; placeholder = "Enter Poster "; ObjectID = "p7l-xv-fmw"; */
+"p7l-xv-fmw.placeholder" = "أدخل الملصق";
+
+/* Class = "UITextField"; placeholder = "Enter Director "; ObjectID = "pEb-bH-f17"; */
+"pEb-bH-f17.placeholder" = "أدخل اسم المخرج";
+
+/* Class = "UILabel"; text = "Director"; ObjectID = "xYH-hr-MwS"; */
+"xYH-hr-MwS.text" = "المخرج";
+
+/* Class = "UILabel"; text = "Director"; ObjectID = "zj6-Nd-GSh"; */
+"zj6-Nd-GSh.text" = "المخرج";
