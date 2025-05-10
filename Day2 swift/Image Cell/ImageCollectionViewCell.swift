@@ -15,7 +15,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         customImgView.isSkeletonable = true
-        customImgView.skeletonCornerRadius = 8  // Optional: Rounded corners()
+        customImgView.skeletonCornerRadius = 8  //  Rounded corners()
     }
     
     
