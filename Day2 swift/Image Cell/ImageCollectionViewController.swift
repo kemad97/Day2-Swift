@@ -13,7 +13,6 @@ private let reuseIdentifier = "Cell"
 class ImageCollectionViewController: UICollectionViewController , UICollectionViewDelegateFlowLayout
 {
     
-    private let reuseIdentifier = "Cell"
     private var movies: [Movie] = []
     private let apiUrl = "https://dummyjson.com/c/8b9b-3f93-4c8d-a8b9"
     private let repository = MovieRepository()
@@ -22,8 +21,13 @@ class ImageCollectionViewController: UICollectionViewController , UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let nib = UINib(nibName: "ImageCollectionViewCell", bundle: nil)
+            collectionView.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
+        
         //fetchMovies()
         loadMovies()
+        
+       
         
         let addBtn = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector (onAddMovie ) )
         
@@ -108,6 +112,8 @@ class ImageCollectionViewController: UICollectionViewController , UICollectionVi
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ImageCollectionViewCell
         
         let movie = movies [indexPath.row]

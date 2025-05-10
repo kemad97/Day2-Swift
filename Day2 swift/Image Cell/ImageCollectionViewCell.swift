@@ -2,13 +2,16 @@
 //  ImageCollectionViewCell.swift
 //  Day2 swift
 //
-//  Created by Kerolos on 29/04/2025.
+//  Created by Kerolos on 10/05/2025.
 //
+
+import UIKit
 
 import UIKit
 import SkeletonView  // For shimmer effect
 
 class ImageCollectionViewCell: UICollectionViewCell {
+    
     
     @IBOutlet weak var customImgView: UIImageView!
     
